@@ -1,5 +1,9 @@
 package com.example.medicalprocess;
 
+import java.sql.Connection;
+
+import db.BDDConnexion;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -7,11 +11,14 @@ import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
+	
+	static public Connection connexion = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		connexion = BDDConnexion.connect();
 	}
 
 	@Override
