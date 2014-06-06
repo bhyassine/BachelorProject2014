@@ -57,7 +57,7 @@ public class Utilisateur {
 	public static Utilisateur add(String nom, String prenom, String password,
 			String email, int entite, int fonction) throws SQLException, NoSuchAlgorithmException {
 		Statement statement = MainActivity.connexion.createStatement();
-		statement.executeUpdate("INSERT INTO Utilisateurs SET nom = '"+nom+"' , prenom = '"+prenom+"' , email = '"+email+"' , password = '"+Functions.hash(password)+"' , numeroEntite = "+entite+" , numeroFonction = "+fonction+" , valide=0");
+		statement.executeUpdate("INSERT INTO Utilisateurs SET nom = '"+nom+"' , prenom = '"+prenom+"' , email = '"+email+"' , password = '"+Functions.hash(password)+"' , numeroEntite = "+entite+" , numeroFonction = "+fonction+" , valide=0 , webmaster=0");
 		return getByEmail(email);
 	}
 
