@@ -1,30 +1,64 @@
 package classes;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import utils.Functions;
+
 import com.example.medicalprocess.MainActivity;
 
-public final class Utilisateur {
+public class Utilisateur {
 	private int uid;
 	private String nom;
 	private String prenom;
-	private String username;
 	private String password;
 	private String email;
 	private Entite entite;
 	private Fonction fonction;
+	private boolean valide;
+	private boolean webmaster;
 	
-	private Utilisateur(ResultSet rs) throws SQLException
+	public Utilisateur(ResultSet rs) throws SQLException
 	{
 		uid=rs.getInt("uid");
 		nom=rs.getString("nom");
 		prenom=rs.getString("prenom");
-		username=rs.getString("username");
 		password=rs.getString("password");
 		email=rs.getString("email");
-		entite=Entite.getByEid(rs.getInt("entite"));
-		fonction=Fonction.getByNumero(rs.getInt("fonction"));
+		entite=Entite.getByEid(rs.getInt("numeroEntite"));
+		fonction=Fonction.getByNumero(rs.getInt("numeroFonction"));
+		if(rs.getInt("valide")==1)
+			valide=true;
+		else
+			valide=false;
+		if(rs.getInt("webmaster")==1)
+			webmaster=true;
+		else
+			webmaster=false;
+	}
+
+	public boolean isValide() {
+		return valide;
+	}
+
+	public void setValide(boolean valide) {
+		this.valide = valide;
+	}
+	
+	public boolean isWebmaster() {
+		return webmaster;
+	}
+
+	public void setWebmaster(boolean webmaster) {
+		this.webmaster = webmaster;
+	}
+
+	public static Utilisateur add(String nom, String prenom, String password,
+			String email, int entite, int fonction) throws SQLException, NoSuchAlgorithmException {
+		Statement statement = MainActivity.connexion.createStatement();
+		statement.executeUpdate("INSERT INTO Utilisateurs SET nom = '"+nom+"' , prenom = '"+prenom+"' , email = '"+email+"' , password = '"+Functions.hash(password)+"' , numeroEntite = "+entite+" , numeroFonction = "+fonction+" , valide=0");
+		return getByEmail(email);
 	}
 
 	public int getUid() {
@@ -49,14 +83,6 @@ public final class Utilisateur {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -91,15 +117,6 @@ public final class Utilisateur {
 		this.fonction = fonction;
 	}
 	
-	public static Utilisateur connect(String username, String password) throws SQLException
-	{
-		Statement statement = MainActivity.connexion.createStatement();
-		ResultSet rs = statement.executeQuery("SELECT * FROM Utilisateurs WHERE username = '"+username+"' AND password = '"+password+"'");
-		if(rs.next())
-			return new Utilisateur(rs);
-		return null;
-	}
-	
 	public static Utilisateur getByUid(int uid) throws SQLException
 	{
 		Statement statement = MainActivity.connexion.createStatement();
@@ -109,4 +126,26 @@ public final class Utilisateur {
 		return null;
 	}
 	
+	public static Utilisateur getByEmail(String email) throws SQLException
+	{
+		Statement statement = MainActivity.connexion.createStatement();
+		ResultSet rs = statement.executeQuery("SELECT * FROM Utilisateurs WHERE email = '"+email+"'");
+		if(rs.next())
+			return new Utilisateur(rs);
+		return null;
+	}
+	
+	public void refresh() throws SQLException
+	{
+		Utilisateur user = Utilisateur.getByUid(uid);
+		uid=user.getUid();
+		nom=user.getNom();
+		prenom=user.getPrenom();
+		password=user.getPassword();
+		email=user.getEmail();
+		entite=user.getEntite();
+		fonction=user.getFonction();
+		valide=user.isValide();
+		webmaster=user.isWebmaster();
+	}
 }

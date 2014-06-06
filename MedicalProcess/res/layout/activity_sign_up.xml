@@ -24,18 +24,21 @@
         android:layout_height="wrap_content" 
         android:hint="@string/email_editText"
         android:inputType="textEmailAddress"
-        android:id="@+id/email_edit_text"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:hint="@string/username_editText"
-        android:id="@+id/usernameSignUpAct_edit_text"/>
+        android:id="@+id/emailSignUp_edit_text"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:hint="@string/password_editText"
         android:inputType="textPassword"
-        android:id="@+id/passwordSignUpAct_edit_text"/>
+        android:id="@+id/passwordSignUp_edit_text"/>
+    <Spinner 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fonction_spinner" />
+    <Spinner 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/entite_spinner" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

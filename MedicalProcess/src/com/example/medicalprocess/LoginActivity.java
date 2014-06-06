@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 
 public class LoginActivity extends Activity {
 
@@ -12,6 +13,10 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		if(MainActivity.user!=null)
+		{
+		    finish();
+		}
 	}
 
 	@Override
@@ -21,22 +26,25 @@ public class LoginActivity extends Activity {
 		return true;
 	}
 	
-	/**
-	 * Called when the "Log In" button is pressed.
-	 * @param view
-	 */
 	public void logIn(View view) {
-	    /////// A faire par Yassine
+		EditText email = (EditText)findViewById(R.id.email_edit_text);
+		EditText password = (EditText)findViewById(R.id.password_edit_text);
+		String emailString = email.getText().toString();
+		String passwordString = password.getText().toString();
+		new LoginAsyncTask().execute(this, emailString, passwordString);
 	}
 	
-	/**
-	 * Called when the "Sign Up" button is pressed.
-	 * Starts the SignUpActivity.
-	 * @param view
-	 */
 	public void signUp(View view) {
 	    Intent signUpActivityIntent = new Intent(this, SignUpActivity.class);
 	    startActivity(signUpActivityIntent);
+	}
+	
+	public void init()
+	{
+		EditText email = (EditText)findViewById(R.id.email_edit_text);
+		EditText password = (EditText)findViewById(R.id.password_edit_text);
+		email.setText("");
+		password.setText("");
 	}
 
 }

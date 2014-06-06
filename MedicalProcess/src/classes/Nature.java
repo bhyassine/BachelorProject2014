@@ -3,6 +3,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.medicalprocess.MainActivity;
 
 import db.BDDConnexion;
 
@@ -35,6 +39,23 @@ public class Nature {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static List<Nature> listAll()
+	{
+		List<Nature> list = new ArrayList<Nature>();
+		Statement statement;
+		ResultSet rs;
+		try {
+			statement = MainActivity.connexion.createStatement();
+			rs = statement.executeQuery("SELECT * FROM Dico_Nature ORDER BY numeroNature");
+			while(rs.next())
+				list.add(new Nature(rs));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public int getNumero() {

@@ -5,13 +5,15 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="username_editText">Username</string>
+    <string name="email_editText">Email</string>
     <string name="password_editText">Password</string>
     <string name="login_button">Log In</string>
     <string name="signUp_button">Sign Up</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="firstName_editText">First Name</string>
     <string name="lastName_editText">Last Name</string>
-    <string name="email_editText">Your Email</string>
+    <string name="fonction_editText">Fonction</string>
+    <string name="entite_editText">Entite</string>
+    <string name="refresh_button">Refresh</string>
 
 </resources>
