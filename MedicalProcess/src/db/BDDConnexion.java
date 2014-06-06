@@ -16,7 +16,7 @@ public class BDDConnexion
         try {
             String userName = "root";
             String password = "root";
-            String url = "jdbc:mysql://192.168.0.127:8889/MedicalProcess";
+            String url = "jdbc:mysql://10.0.2.2:8889/MedicalProcess";
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             connexion = DriverManager.getConnection(url, userName, password);
             System.out.println("Database connection established");

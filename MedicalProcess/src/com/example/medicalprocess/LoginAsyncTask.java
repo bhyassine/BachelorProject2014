@@ -26,13 +26,21 @@ public class LoginAsyncTask extends
 		try {
 			UtilisateurConnecte user = UtilisateurConnecte.connect(email, password);
 			MainActivity.user=user;
-			activity.finish();
-			MainActivity.activity.comeBack();
 		} catch (NoSuchAlgorithmException e) {
 			Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
 			activity.init();
 		} catch (SQLException e) {
 			Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
+			activity.init();
+		}
+		if(MainActivity.user!=null)
+		{
+			activity.finish();
+			MainActivity.activity.comeBack();
+		}
+		else
+		{
+			Toast.makeText(activity, "Wrong password or username", Toast.LENGTH_LONG).show();
 			activity.init();
 		}
 	}
