@@ -15,5 +15,17 @@
     <string name="fonction_editText">Fonction</string>
     <string name="entite_editText">Entite</string>
     <string name="refresh_button">Refresh</string>
+    <string name="addNewPatient_button">Add New Patient</string>
+    <string name="title_activity_secretary">SecretaryActivity</string>
+    <string name="work_button">Work</string>
+    <string name="addNewConsultation_button">Add New Consultation</string>
+    <string name="getConsultationsList_button">Consultations</string>
+    <string name="title_activity_add_new_patient">AddNewPatientActivity</string>
+    <string name="createNewPatient_button">Create</string>
+    <string name="patientAge_editText">Age</string>
+    <string name="patientSexe_editText">Gender</string>
+    <string name="title_activity_add_new_consultation">AddNewConsultation</string>
+    <string name="patientId_editText">Patient ID</string>
+    <string name="title_activity_show_consultations">ShowConsultationsActivity</string>
 
 </resources>

@@ -33,15 +33,13 @@ public class LoginAsyncTask extends
 			Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
 			activity.init();
 		}
-		if(MainActivity.user!=null)
-		{
+		if (MainActivity.user!=null) {
 			activity.finish();
 			MainActivity.activity.comeBack();
-		}
-		else
-		{
+		} else {
 			Toast.makeText(activity, "Wrong password or username", Toast.LENGTH_LONG).show();
 			activity.init();
 		}
+		
 	}
 }

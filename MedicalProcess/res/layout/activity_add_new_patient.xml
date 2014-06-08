@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".AddNewPatientActivity" >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:hint="@string/firstName_editText"
+        android:id="@+id/patientFirstName_edit_text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:hint="@string/lastName_editText"
+        android:id="@+id/patientLastName_edit_text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:hint="@string/email_editText"
+        android:inputType="textEmailAddress"
+        android:id="@+id/patientEmail_edit_text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:hint="@string/patientAge_editText"
+        android:inputType="number"
+        android:id="@+id/patientAge_edit_text"/>
+	<EditText 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/patientSexe_editText"
+        android:id="@+id/patientSexe_edit_text"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/createNewPatient_button"
+        android:onClick="createNewPatient"/>
+  
+</LinearLayout>

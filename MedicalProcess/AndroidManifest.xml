@@ -7,9 +7,9 @@
     <uses-sdk
         android:minSdkVersion="18"
         android:targetSdkVersion="18" />
-    
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -32,6 +32,26 @@
         <activity
             android:name="com.example.medicalprocess.SignUpActivity"
             android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name="com.example.medicalprocess.SecretaryActivity"
+            android:label="@string/title_activity_secretary" >
+        </activity>
+        <activity
+            android:name="com.example.medicalprocess.AddNewPatientActivity"
+            android:label="@string/title_activity_add_new_patient" >
+        </activity>
+        <activity
+            android:name="com.example.medicalprocess.AddNewConsultation"
+            android:label="@string/title_activity_add_new_consultation" >
+        </activity>
+        <activity
+            android:name="com.example.medicalprocess.AddNewConsultationActivity"
+            android:label="@string/title_activity_add_new_consultation" >
+        </activity>
+        <activity
+            android:name="com.example.medicalprocess.ShowConsultationsActivity"
+            android:label="@string/title_activity_show_consultations" >
         </activity>
     </application>
 

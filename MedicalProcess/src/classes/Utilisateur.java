@@ -3,6 +3,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import utils.Functions;
 
@@ -148,4 +150,30 @@ public class Utilisateur {
 		valide=user.isValide();
 		webmaster=user.isWebmaster();
 	}
+	
+	public static List<Utilisateur> listAllPerFonctionPerEntite(Fonction fonction,Entite entite) {
+		List<Utilisateur> list = new ArrayList<Utilisateur>();
+		Statement statement;
+		ResultSet rs;
+		try {
+			statement = MainActivity.connexion.createStatement();
+			int fonctionNum = fonction.getNumero();
+			int entiteNum = entite.getNature().getNumero();
+			rs = statement.executeQuery("SELECT * FROM Utilisateurs WHERE numeroEntite='"+entiteNum+"' AND numeroFonction='"+fonctionNum+"'");
+			while(rs.next())
+				list.add(new Utilisateur(rs));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public String toString() {
+		return nom+" "+prenom+" "+uid;
+	}
+	
+	
+	
+	
 }

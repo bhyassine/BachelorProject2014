@@ -1,9 +1,11 @@
 package classes;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+
 
 import com.example.medicalprocess.MainActivity;
 
@@ -100,4 +102,14 @@ public class Patient {
 			return new Patient(rs);
 		return null;
 	}
+	
+	
+	public static void add(String nom, String prenom, String email, int age, 
+			char sexe) throws SQLException, NoSuchAlgorithmException {
+		Statement statement = MainActivity.connexion.createStatement();
+		statement.executeUpdate("INSERT INTO Patients SET nom = '"+nom+"' , prenom = '"+prenom+"' , email = '"+email+"' , age = '"+age+"' , sexe = '"+sexe+"'");
+		
+	}
+	
+	
 }

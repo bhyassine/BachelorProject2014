@@ -1,8 +1,12 @@
 package classes;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.example.medicalprocess.MainActivity;
 
 public class Consultation {
 	private int cid;
@@ -52,4 +56,11 @@ public class Consultation {
 	public CodePrestation[] codesPrestations() {
 		throw new UnsupportedOperationException();
 	}
+	
+	public static void add(int patientId, int doctorId, Date dateConsultation) 
+			throws SQLException, NoSuchAlgorithmException {
+		Statement statement = MainActivity.connexion.createStatement();
+		statement.executeUpdate("INSERT INTO Consultations SET patient = '"+patientId+"' , utilisateur = '"+doctorId+"' , date = '"+dateConsultation+"'");
+		
+	} 
 }

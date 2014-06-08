@@ -33,10 +33,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_webmaster" />
-    <Button
+	<Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/refresh_button"
         android:onClick="refresh"/>
+	<Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/work_button"
+        android:onClick="workToDo"
+        android:id="@+id/main_work_button"
+        android:visibility="invisible"/>
     
 </LinearLayout>
